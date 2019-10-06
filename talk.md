@@ -1,17 +1,15 @@
 class: middle, center, title-slide
 count: false
 
-# Talk Template
-Subtitle of talk
-
+# Likelihood preservation and statistical reproduction of searches for new physics
 <br>
 
 Matthew Feickert<br>
 [matthew.feickert@cern.ch](mailto:matthew.feickert@cern.ch)
 
-[Talk Event Name](https://talk-event-url)
+[CHEP 2019](https://indico.cern.ch/event/773049/contributions/3476143/)
 
-Month DDth, Year
+November 7th, 2019
 
 ---
 # Collaborators
