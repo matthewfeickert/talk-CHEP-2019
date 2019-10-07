@@ -120,35 +120,29 @@ $$
 - .katex[Event rates] $\nu\_{cb}$ from nominal rate $\nu\_{scb}^{0}$ and rate modifiers $\kappa$ and $\Delta$
 
 ---
-# Formation definition
-
-Following Hopcroft and Ullman (1979, p. 148), a (one-tape) Turing machine can be formally defined as a 7-tuple $M=(Q,\Gamma,b,\Sigma,\delta, q\_0, F)$, where
-- $Q$ is a finite, non-empty set of states;
-- $\Gamma$ is a finite, non-empty set of tapes alphabet symbols;
-- $b \in \Gamma \setminus \\{b\\}$ is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents;
-- $q\_0 \in Q$ is the initial state;
-- $F \subseteq Q$ is the set of final states or accepting states. The initial tape contents is said to be accepted by $M$ if it eventually halts in a state from $F$.
-- $\delta: (Q \setminus F) \times \Gamma \rightarrow Q \times \Gamma \times \\{L,R\\}$ is the state transition function.
-
----
-
-Next slide
-
-.footnote[This is a footnote.]
-
----
-
-class: middle
-
-# Summary
-
----
-
-class: middle
-
-- abc
-- def
-- ghi
+# `pyhf`: HistFactory in pure Python
+<!--  -->
+.kol-1-2.width-95[
+- First non-ROOT implementation of the HistFactory p.d.f. template
+   - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1169739.svg)](https://doi.org/10.5281/zenodo.1169739)
+   - pure-Python library
+      - [`pip install pyhf`](https://diana-hep.org/pyhf/installation.html#install-from-pypi)
+   - machine learning frameworks as computational backends
+      - [`pip install pyhf[tensorflow]`](https://diana-hep.org/pyhf/installation.html#with-tensorflow-backend)
+]
+.kol-1-2.center.width-90[
+[![pyhf_logo](https://iris-hep.org/assets/logos/pyhf-logo.png)](https://diana-hep.org/pyhf/)
+]
+<!--  -->
+.kol-1-1[
+- Alternative choice to ROOT-based HistFactory to use in the analysis pipeline of HistFitter + HistFactory + RooStats
+   - Project scope: HistFactory
+   - Not a replacement for HistFitter or RooStats
+- Open source tool for all of HEP
+   - Originated from a [DIANA/HEP](https://diana-hep.org/) project fellowship
+   - Not experiment specific (though designed by ATLAS physicists)
+   - Used for reinterpretation in phenomenology paper [2] and gaining interest in ATLAS
+]
 
 ---
 class: end-slide, center
