@@ -52,10 +52,35 @@ NYU
 ]
 
 ---
+# Likelihood serialization...
 
-class: middle
+.center[...making good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)]
 
-# A transition slide topic
+<br>
+
+.center.width-100[
+[![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
+]
+
+.center[([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))]
+
+<br>
+
+.center[Problem: How to communicate multidimensional likelihoods?]
+
+---
+# HistFactory
+
+<br>
+
+- A flexible p.d.f. template to build statistical models from binned distributions and data
+- Developed by Cranmer, Lewis, Moneta, Shibata, and Verkerke [1]
+- Widely used by the HEP community for standard model measurements and BSM searches
+   <!-- - Show public summary plots and link to references that use HistFactory (multi b-jets for example) -->
+
+.kol-1-1.center[
+.width-100[![HistFactory_uses](figures/HistFactory_result_examples.png)]
+]
 
 ---
 # HistFactory Template
@@ -74,6 +99,29 @@ $$\begin{aligned}
 - .blue[Main Poisson p.d.f. for bins observed in all channels]
 - .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
    - encoding systematic uncertainties (normalization, shape, etc)
+
+---
+# HistFactory Template pyhf
+
+$$
+f\left(n, a\middle|\eta, \chi\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\eta,\chi\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \chi} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
+$$
+
+<!-- $$\begin{aligned}
+\nu\_{cb}(\phi) &= \sum\_{s \\,\in\\, \textrm{samples}} \nu\_{scb}(\nu, \chi)\\\\
+&= \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \kappa} \kappa\_{scb}(\nu, \chi)\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\nu, \chi) + \underbrace{\sum\_{\Delta \\,\in\\, \Delta} \Delta\_{scb}(\nu, \chi)}\_{\textrm{additive}}\Bigg)
+\end{aligned}$$ -->
+$$
+\nu\_{cb}(\nu, \chi) = \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \kappa} \kappa\_{scb}(\nu, \chi)\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\nu, \chi) + \underbrace{\sum\_{\Delta \\,\in\\, \Delta} \Delta\_{scb}(\nu, \chi)}\_{\textrm{additive}}\Bigg)
+$$
+
+.bold[Use:] Multiple disjoint _channels_ (or regions) of binned distributions with multiple _samples_ contributing to each with additional (possibly shared) systematics between sample estimates
+
+.bold[Main pieces:]
+- .blue[Main Poisson p.d.f. for simultaneous measurement of multiple channels]
+- .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
+   - encoding systematic uncertainties (normalization, shape, etc)
+- .katex[Event rates] $\nu\_{cb}$ from nominal rate $\nu\_{scb}^{0}$ and rate modifiers $\kappa$ and $\Delta$
 
 ---
 # Formation definition
