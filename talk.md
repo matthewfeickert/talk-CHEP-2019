@@ -104,15 +104,11 @@ $$\begin{aligned}
 # HistFactory Template pyhf
 
 $$
-f\left(n, a\middle|\eta, \chi\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\eta,\chi\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \chi} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
+f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
 $$
 
-<!-- $$\begin{aligned}
-\nu\_{cb}(\phi) &= \sum\_{s \\,\in\\, \textrm{samples}} \nu\_{scb}(\nu, \chi)\\\\
-&= \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \kappa} \kappa\_{scb}(\nu, \chi)\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\nu, \chi) + \underbrace{\sum\_{\Delta \\,\in\\, \Delta} \Delta\_{scb}(\nu, \chi)}\_{\textrm{additive}}\Bigg)
-\end{aligned}$$ -->
 $$
-\nu\_{cb}(\nu, \chi) = \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \kappa} \kappa\_{scb}(\nu, \chi)\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\nu, \chi) + \underbrace{\sum\_{\Delta \\,\in\\, \Delta} \Delta\_{scb}(\nu, \chi)}\_{\textrm{additive}}\Bigg)
+\nu\_{cb}(\vec{\eta}, \vec{\chi}) = \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \vec{\kappa}} \kappa\_{scb}(\vec{\eta}, \vec{\chi})\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\vec{\eta}, \vec{\chi}) + \underbrace{\sum\_{\Delta \\,\in\\, \vec{\Delta}} \Delta\_{scb}(\vec{\eta}, \vec{\chi})}\_{\textrm{additive}}\Bigg)
 $$
 
 .bold[Use:] Multiple disjoint _channels_ (or regions) of binned distributions with multiple _samples_ contributing to each with additional (possibly shared) systematics between sample estimates
