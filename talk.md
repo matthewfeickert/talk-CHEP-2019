@@ -85,24 +85,6 @@ NYU
 ---
 # HistFactory Template
 
-<br>
-
-$$\begin{aligned}
-&\mathcal{P}\left(n\_{c}, x\_{e}, a\_{p} \middle|\phi\_{p}, \alpha\_{p}, \gamma\_{b} \right) = \\\\
-&{\color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \left[\textrm{Pois}\left(n\_{c} \middle| \nu\_{c}\right) \prod\_{e=1}^{n\_{c}} f\_{c}\left(x\_{e} \middle| \vec{\alpha}\right)\right]}} {\color{red}{G\left(L\_{0} \middle| \lambda, \Delta\_{L}\right) \prod\_{p\\, \in\\, \mathbb{S}+\Gamma} f\_{p}\left(a\_{p} \middle| \alpha\_{p}\right)}}
-\end{aligned}$$
-
-.bold[Use:] Multiple disjoint _channels_ (or regions) of binned distributions with multiple _samples_ contributing to each with additional (possibly shared) systematics between sample estimates
-
-.bold[Main pieces:]
-
-- .blue[Main Poisson p.d.f. for bins observed in all channels]
-- .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
-   - encoding systematic uncertainties (normalization, shape, etc)
-
----
-# HistFactory Template pyhf
-
 $$
 f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
 $$
@@ -118,6 +100,26 @@ $$
 - .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
    - encoding systematic uncertainties (normalization, shape, etc)
 - .katex[Event rates] $\nu\_{cb}$ from nominal rate $\nu\_{scb}^{0}$ and rate modifiers $\kappa$ and $\Delta$
+
+---
+# HistFactory Template
+
+$$
+f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right) \prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)
+$$
+
+.bold[This is a _mathematical_ representation!] Nowhere is any software spec defined
+
+Until now, the only implementation of HistFactory has been in RooStats+RooFit
+
+- To start using HistFactory p.d.f.s first have to learn ROOT, RooFit, RooStats
+   - Problem for our theory colleagues (generally don't want to)
+- Possible issues with scaling I/O and memory for large models
+   - Not multithreaded
+- Difficult to interface with modern tools for minimization and computation of the p.d.f.
+- Likelihood stored in the binary ROOT format
+   - Challenge for long-term preservation (i.e. HEPData)
+   - Why is a histogram needed for an array of numbers?
 
 ---
 # `pyhf`: HistFactory in pure Python
