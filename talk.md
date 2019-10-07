@@ -12,6 +12,17 @@ Matthew Feickert<br>
 November 7th, 2019
 
 ---
+# Summary of Invited Talk Information and Guidelines
+
+Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/773049/page/17867-instructions-to-speakers)
+
+- Topic: [Likelihood preservation and statistical reproduction of searches for new physics](https://indico.cern.ch/event/773049/contributions/3476143/)
+   - [ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863)
+- ATLAS Talk?: Yes
+- Time Limit: 15 minutes (All parallel session talks are .blue[12 minutes] + **3 minutes** for questions)
+- Slides must be prepared for projection 16:9 format (longer side along the horizontal direction) ✓
+
+---
 # Collaborators
 
 <br><br>
