@@ -37,7 +37,7 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 
 <br>
 
-.center[Problem: How to communicate multidimensional likelihoods?]
+.center[This hadn't been done in HEP until now]
 
 ---
 # HistFactory
@@ -205,7 +205,7 @@ Through pyhf are able to provide:
 - Bidirectional translation of likelihood specifications
    - ROOT workspaces ↔ JSON
 - Independent Python-only implementation of HistFactory + hypothesis testing
-- Make good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)
+- Publication for the first time of the full likelihood of a search for new physics
 
 .kol-1-2.center.width-100[
 [![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
