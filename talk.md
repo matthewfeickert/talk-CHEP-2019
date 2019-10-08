@@ -179,6 +179,44 @@ class: middle
 .center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
 
 ---
+# Likelihood serialization and reproduction
+<!--  -->
+- ATLAS PUB note on the JSON schema for serialization and reproduction of results ([ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863))
+   - Contours: .teal[█] original ROOT+XML, .lightblue[█] pyhf JSON, .lightgreen[█] JSON converted back to ROOT+XML
+   - Serialized likelihood and reproduced results of ATLAS Run-2 search for sbottom quarks ([CERN-EP-2019-142](http://inspirehep.net/record/1748602)) and published to HEPData
+   - Shown to reproduce results but faster! .bold[ROOT:] 10+ hours .bold[pyhf:] < 30 minutes
+
+.kol-1-2.center.width-100[
+[![overlay_multiplex_contour](figures/overlay_multiplex_contour.png)](https://cds.cern.ch/record/2684863)
+Overlay of three countours
+]
+.kol-1-2.right.width-75[
+[![discrepancy](figures/discrepancy.png)](https://cds.cern.ch/record/2684863)
+Largest discrepancy
+]
+
+---
+# Summary
+
+Through pyhf are able to provide:
+
+- JSON specification of likelihoods
+   - human/machine readable, versionable, HEPData friendly, orders of magnitude smaller
+- Bidirectional translation of likelihood specifications
+   - ROOT workspaces ↔ JSON
+- Independent Python-only implementation of HistFactory + hypothesis testing
+- Make good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)
+
+.kol-1-2.center.width-100[
+[![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
+([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))
+]
+.kol-1-2.center.width-100[
+[![PUB_note_cover](figures/PUB_note_cover.png)](https://cds.cern.ch/record/2684863)
+([ATLAS, 2019](https://cds.cern.ch/record/2684863))
+]
+
+---
 class: end-slide, center
 
 Backup
