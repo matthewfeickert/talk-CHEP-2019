@@ -23,35 +23,6 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 - Slides must be prepared for projection 16:9 format (longer side along the horizontal direction) ✓
 
 ---
-# Collaborators
-
-<br><br>
-
-.grid[
-.kol-1-3.center[
-.circle.width-80[![Lukas](figures/collaborators/heinrich.jpg)]
-
-[Lukas Heinrich](https://github.com/lukasheinrich)
-
-CERN
-]
-.kol-1-3.center[
-.circle.width-80[![Giordon](https://avatars0.githubusercontent.com/u/761483)]
-
-[Giordon Stark](https://github.com/kratsg)
-
-UCSC SCIPP
-]
-.kol-1-3.center[
-.circle.width-70[![Kyle](figures/collaborators/cranmer.png)]
-
-[Kyle Cranmer](http://theoryandpractice.org/)
-
-NYU
-]
-]
-
----
 # Likelihood serialization...
 
 .center[...making good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)]
@@ -120,6 +91,35 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 - Likelihood stored in the binary ROOT format
    - Challenge for long-term preservation (i.e. HEPData)
    - Why is a histogram needed for an array of numbers?
+
+---
+# Collaborators
+
+<br><br>
+
+.grid[
+.kol-1-3.center[
+.circle.width-80[![Lukas](figures/collaborators/heinrich.jpg)]
+
+[Lukas Heinrich](https://github.com/lukasheinrich)
+
+CERN
+]
+.kol-1-3.center[
+.circle.width-80[![Giordon](https://avatars0.githubusercontent.com/u/761483)]
+
+[Giordon Stark](https://github.com/kratsg)
+
+UCSC SCIPP
+]
+.kol-1-3.center[
+.circle.width-70[![Kyle](figures/collaborators/cranmer.png)]
+
+[Kyle Cranmer](http://theoryandpractice.org/)
+
+NYU
+]
+]
 
 ---
 # `pyhf`: HistFactory in pure Python
