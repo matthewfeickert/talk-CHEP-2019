@@ -155,24 +155,6 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 
 ---
 # $CL_{s}$ Example using `pyhf` CLI
-<br>
-
-```
-$ pyhf cls demo.json
-{
-    "CLs_exp": [
-        0.002606408505279359,
-        0.013820656047622592,
-        0.0644552079856191,
-        0.23526102499555396,
-        0.573041803728844
-    ],
-    "CLs_obs": 0.05290116065118097
-}
-```
-
----
-# $CL_{s}$ Example using `pyhf` CLI
 
 .center.width-80[![demo_CLI](figures/carbon_CLI_output.png)]
 
