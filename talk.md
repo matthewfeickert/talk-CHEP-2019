@@ -170,6 +170,21 @@ class: middle
 
 ---
 # JSON Patch files for new signal models
+
+.center.width-100[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
+
+---
+# ...which can be streamed from HEPData
+
+.center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
+
+---
+class: end-slide, center
+
+Backup
+
+---
+# JSON Patch files for new signal models
 <br>
 
 ```
@@ -188,11 +203,6 @@ $ cat new_signal.json
 $ pyhf cls example.json --patch new_signal.json | jq .CLs_obs
 0.4764263982925686
 ```
-
----
-# JSON Patch files for new signal models
-
-.center.width-100[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
 
 ---
 # ...which can be streamed from HEPData
@@ -217,17 +227,6 @@ $ curl -sL https://git.io/fjxXE | \
   jq .CLs_obs
 0.4764263982925686
 ```
-
----
-# ...which can be streamed from HEPData
-
-.center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
-
----
-class: end-slide, center
-
-Backup
-
 
 ---
 # References
