@@ -147,6 +147,11 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 ]
 
 ---
+class: middle
+
+# Make a measurement
+
+---
 # $CL_{s}$ Example using `pyhf` CLI
 
 <a href="https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=seti&wt=none&l=application%2Fjson&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=3px&ph=1px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=4x&wm=false&code=%257B%250A%2520%2520%2520%2520%2522channels%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522samples%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522signal%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B5.0%252C%252010.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2520%2522name%2522%253A%2520%2522mu%2522%252C%2520%2522type%2522%253A%2520%2522normfactor%2522%252C%2520%2522data%2522%253A%2520null%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522background%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2522name%2522%253A%2520%2522uncorr_bkguncrt%2522%252C%2520%2522type%2522%253A%2520%2522shapesys%2522%252C%2520%2522data%2522%253A%2520%255B5.0%252C%252012.0%255D%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522observations%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522measurements%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522Measurement%2522%252C%2520%2522config%2522%253A%2520%257B%2522poi%2522%253A%2520%2522mu%2522%252C%2520%2522parameters%2522%253A%2520%255B%255D%257D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522version%2522%253A%2520%25221.0.0%2522%250A%257D">`JSON` defining a single channel, two bin counting experiment with systematics</a>
@@ -157,6 +162,66 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 # $CL_{s}$ Example using `pyhf` CLI
 
 .center.width-80[![demo_CLI](figures/carbon_CLI_output.png)]
+
+---
+class: middle
+
+# Change the signal model
+
+---
+# JSON Patch files for new signal models
+<br>
+
+```
+$ pyhf cls example.json | jq .CLs_obs
+0.3599845631401913
+```
+```
+$ cat new_signal.json
+[{
+    "op": "replace",
+    "path": "/channels/0/samples/0/data",
+    "value": [5.0, 6.0]
+}]
+```
+```
+$ pyhf cls example.json --patch new_signal.json | jq .CLs_obs
+0.4764263982925686
+```
+
+---
+# JSON Patch files for new signal models
+
+.center.width-100[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
+
+---
+# ...which can be streamed from HEPData
+<br>
+
+```
+$ curl -sL https://git.io/nominal | \
+  pyhf cls --patch <(curl -sL https://git.io/newsignal)
+```
+
+```
+# Nominal
+$ curl -sL https://git.io/fjxXE | \
+  pyhf cls | \
+  jq .CLs_obs
+0.3599845631401913
+```
+```
+# New signal
+$ curl -sL https://git.io/fjxXE | \
+  pyhf cls --patch <(curl -sL https://git.io/JeWTx) | \
+  jq .CLs_obs
+0.4764263982925686
+```
+
+---
+# ...which can be streamed from HEPData
+
+.center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
 
 ---
 class: end-slide, center
