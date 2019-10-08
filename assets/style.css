@@ -34,6 +34,18 @@ body {
     color: #0000ff;
 }
 
+.lightblue {
+    color: #0AD1FE;
+}
+
+.lightgreen {
+    color: #FDE991;
+}
+
+.teal {
+    color: #0AFEF3;
+}
+
 .Q {
     color: #009933;
 }
@@ -113,7 +125,7 @@ strong {
 }
 
 .remark-code {
-    font-size: 8em;
+    font-size: 1em;
 }
 
 ul > li, ol > li {
@@ -369,13 +381,13 @@ td {
 /* Hack to get pyhf logo on */
 .title-slide:before {
     content: '';
-    background: url("https://iris-hep.org/assets/logos/pyhf-logo.png") no-repeat;
-    /* background: url("../assets/logos/logo_experiment.png") no-repeat; */
+    /* background: url("https://iris-hep.org/assets/logos/pyhf-logo.png") no-repeat; */
+    background: url("../assets/logos/logo_experiment.png") no-repeat;
     background-size: 100% 100%;
-    width: 160px;
-    height: 108px;
+    width: 243px;
+    height: 128px;
     position: absolute;
-    bottom: 2em;
+    bottom: 0.8em;
     right: 3.3em;
     display: inline-block;
 }

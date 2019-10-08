@@ -1,17 +1,96 @@
 class: middle, center, title-slide
 count: false
 
-# Talk Template
-Subtitle of talk
-
+# Likelihood preservation and statistical reproduction of searches for new physics
 <br>
 
 Matthew Feickert<br>
 [matthew.feickert@cern.ch](mailto:matthew.feickert@cern.ch)
 
-[Talk Event Name](https://talk-event-url)
+[CHEP 2019](https://indico.cern.ch/event/773049/contributions/3476143/)
 
-Month DDth, Year
+November 7th, 2019
+
+---
+# Summary of Invited Talk Information and Guidelines
+
+Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/773049/page/17867-instructions-to-speakers)
+
+- Topic: [Likelihood preservation and statistical reproduction of searches for new physics](https://indico.cern.ch/event/773049/contributions/3476143/)
+   - [ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863)
+- ATLAS Talk?: Yes
+- Time Limit: 15 minutes (All parallel session talks are .blue[12 minutes] + **3 minutes** for questions)
+- Slides must be prepared for projection 16:9 format (longer side along the horizontal direction) ✓
+
+---
+# Likelihood serialization...
+
+.center[...making good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)]
+
+<br>
+
+.center.width-100[
+[![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
+]
+
+.center[([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))]
+
+<br>
+
+.center[This hadn't been done in HEP until now]
+
+---
+# HistFactory
+
+<br>
+
+- A flexible p.d.f. template to build statistical models from binned distributions and data
+- Developed by Cranmer, Lewis, Moneta, Shibata, and Verkerke [1]
+- Widely used by the HEP community for standard model measurements and BSM searches
+   <!-- - Show public summary plots and link to references that use HistFactory (multi b-jets for example) -->
+
+.kol-1-1.center[
+.width-100[![HistFactory_uses](figures/HistFactory_result_examples.png)]
+]
+
+---
+# HistFactory Template
+
+$$
+f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
+$$
+
+$$
+\nu\_{cb}(\vec{\eta}, \vec{\chi}) = \sum\_{s \\,\in\\, \textrm{samples}} \underbrace{\left(\sum\_{\kappa \\,\in\\, \vec{\kappa}} \kappa\_{scb}(\vec{\eta}, \vec{\chi})\right)}\_{\textrm{multiplicative}} \Bigg(\nu\_{scb}^{0}(\vec{\eta}, \vec{\chi}) + \underbrace{\sum\_{\Delta \\,\in\\, \vec{\Delta}} \Delta\_{scb}(\vec{\eta}, \vec{\chi})}\_{\textrm{additive}}\Bigg)
+$$
+
+.bold[Use:] Multiple disjoint _channels_ (or regions) of binned distributions with multiple _samples_ contributing to each with additional (possibly shared) systematics between sample estimates
+
+.bold[Main pieces:]
+- .blue[Main Poisson p.d.f. for simultaneous measurement of multiple channels]
+- .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
+   - encoding systematic uncertainties (normalization, shape, etc)
+- .katex[Event rates] $\nu\_{cb}$ from nominal rate $\nu\_{scb}^{0}$ and rate modifiers $\kappa$ and $\Delta$
+
+---
+# HistFactory Template
+
+$$
+f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right) \prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)
+$$
+
+.bold[This is a _mathematical_ representation!] Nowhere is any software spec defined
+
+Until now, the only implementation of HistFactory has been in RooStats+RooFit
+
+- To start using HistFactory p.d.f.s first have to learn ROOT, RooFit, RooStats
+   - Problem for our theory colleagues (generally don't want to)
+- Possible issues with scaling I/O and memory for large models
+   - Not multithreaded
+- Difficult to interface with modern tools for minimization and computation of the p.d.f.
+- Likelihood stored in the binary ROOT format
+   - Challenge for long-term preservation (i.e. HEPData)
+   - Why is a histogram needed for an array of numbers?
 
 ---
 # Collaborators
@@ -43,65 +122,149 @@ NYU
 ]
 
 ---
+# `pyhf`: HistFactory in pure Python
+<!--  -->
+.kol-1-2.width-95[
+- First non-ROOT implementation of the HistFactory p.d.f. template
+   - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1169739.svg)](https://doi.org/10.5281/zenodo.1169739)
+   - pure-Python library
+      - [`pip install pyhf`](https://diana-hep.org/pyhf/installation.html#install-from-pypi)
+   - machine learning frameworks as computational backends
+      - [`pip install pyhf[tensorflow]`](https://diana-hep.org/pyhf/installation.html#with-tensorflow-backend)
+]
+.kol-1-2.center.width-90[
+[![pyhf_logo](https://iris-hep.org/assets/logos/pyhf-logo.png)](https://diana-hep.org/pyhf/)
+]
+<!--  -->
+.kol-1-1[
+- Alternative choice to ROOT-based HistFactory to use in the analysis pipeline of HistFitter + HistFactory + RooStats
+   - Project scope: HistFactory
+   - Not a replacement for HistFitter or RooStats
+- Open source tool for all of HEP
+   - Originated from a [DIANA/HEP](https://diana-hep.org/) project fellowship
+   - Not experiment specific (though designed by ATLAS physicists)
+   - Used for reinterpretation in phenomenology paper [2] and gaining interest in ATLAS
+]
 
+---
 class: middle
 
-# A transition slide topic
+# Make a measurement
 
 ---
-# HistFactory Template
+# $CL_{s}$ Example using `pyhf` CLI
 
-<br>
+<a href="https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=seti&wt=none&l=application%2Fjson&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=3px&ph=1px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=4x&wm=false&code=%257B%250A%2520%2520%2520%2520%2522channels%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522samples%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522signal%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B5.0%252C%252010.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2520%2522name%2522%253A%2520%2522mu%2522%252C%2520%2522type%2522%253A%2520%2522normfactor%2522%252C%2520%2522data%2522%253A%2520null%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522background%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2522name%2522%253A%2520%2522uncorr_bkguncrt%2522%252C%2520%2522type%2522%253A%2520%2522shapesys%2522%252C%2520%2522data%2522%253A%2520%255B5.0%252C%252012.0%255D%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522observations%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522measurements%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522Measurement%2522%252C%2520%2522config%2522%253A%2520%257B%2522poi%2522%253A%2520%2522mu%2522%252C%2520%2522parameters%2522%253A%2520%255B%255D%257D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522version%2522%253A%2520%25221.0.0%2522%250A%257D">`JSON` defining a single channel, two bin counting experiment with systematics</a>
 
-$$\begin{aligned}
-&\mathcal{P}\left(n\_{c}, x\_{e}, a\_{p} \middle|\phi\_{p}, \alpha\_{p}, \gamma\_{b} \right) = \\\\
-&{\color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \left[\textrm{Pois}\left(n\_{c} \middle| \nu\_{c}\right) \prod\_{e=1}^{n\_{c}} f\_{c}\left(x\_{e} \middle| \vec{\alpha}\right)\right]}} {\color{red}{G\left(L\_{0} \middle| \lambda, \Delta\_{L}\right) \prod\_{p\\, \in\\, \mathbb{S}+\Gamma} f\_{p}\left(a\_{p} \middle| \alpha\_{p}\right)}}
-\end{aligned}$$
-
-.bold[Use:] Multiple disjoint _channels_ (or regions) of binned distributions with multiple _samples_ contributing to each with additional (possibly shared) systematics between sample estimates
-
-.bold[Main pieces:]
-
-- .blue[Main Poisson p.d.f. for bins observed in all channels]
-- .red[Constraint p.d.f. (+ data) for "auxiliary measurements"]
-   - encoding systematic uncertainties (normalization, shape, etc)
+.center.width-100[![demo_JSON](figures/carbon_JSON_spec.png)]
 
 ---
-# Formation definition
+# $CL_{s}$ Example using `pyhf` CLI
 
-Following Hopcroft and Ullman (1979, p. 148), a (one-tape) Turing machine can be formally defined as a 7-tuple $M=(Q,\Gamma,b,\Sigma,\delta, q\_0, F)$, where
-- $Q$ is a finite, non-empty set of states;
-- $\Gamma$ is a finite, non-empty set of tapes alphabet symbols;
-- $b \in \Gamma \setminus \\{b\\}$ is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents;
-- $q\_0 \in Q$ is the initial state;
-- $F \subseteq Q$ is the set of final states or accepting states. The initial tape contents is said to be accepted by $M$ if it eventually halts in a state from $F$.
-- $\delta: (Q \setminus F) \times \Gamma \rightarrow Q \times \Gamma \times \\{L,R\\}$ is the state transition function.
+.center.width-80[![demo_CLI](figures/carbon_CLI_output.png)]
 
 ---
-
-Next slide
-
-.footnote[This is a footnote.]
-
----
-
 class: middle
 
+# Change the signal model
+
+---
+# JSON Patch files for new signal models
+
+.center.width-100[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
+
+---
+# ...which can be streamed from HEPData
+
+.center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
+
+---
+# Likelihood serialization and reproduction
+<!--  -->
+- ATLAS PUB note on the JSON schema for serialization and reproduction of results ([ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863))
+   - Contours: .teal[█] original ROOT+XML, .lightblue[█] pyhf JSON, .lightgreen[█] JSON converted back to ROOT+XML
+   - Serialized likelihood and reproduced results of ATLAS Run-2 search for sbottom quarks ([CERN-EP-2019-142](http://inspirehep.net/record/1748602)) and published to HEPData
+   - Shown to reproduce results but faster! .bold[ROOT:] 10+ hours .bold[pyhf:] < 30 minutes
+
+.kol-1-2.center.width-100[
+[![overlay_multiplex_contour](figures/overlay_multiplex_contour.png)](https://cds.cern.ch/record/2684863)
+Overlay of three countours
+]
+.kol-1-2.right.width-75[
+[![discrepancy](figures/discrepancy.png)](https://cds.cern.ch/record/2684863)
+Largest discrepancy
+]
+
+---
 # Summary
 
----
+Through pyhf are able to provide:
 
-class: middle
+- JSON specification of likelihoods
+   - human/machine readable, versionable, HEPData friendly, orders of magnitude smaller
+- Bidirectional translation of likelihood specifications
+   - ROOT workspaces ↔ JSON
+- Independent Python-only implementation of HistFactory + hypothesis testing
+- Publication for the first time of the full likelihood of a search for new physics
 
-- abc
-- def
-- ghi
+.kol-1-2.center.width-100[
+[![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
+([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))
+]
+.kol-1-2.center.width-100[
+[![PUB_note_cover](figures/PUB_note_cover.png)](https://cds.cern.ch/record/2684863)
+([ATLAS, 2019](https://cds.cern.ch/record/2684863))
+]
 
 ---
 class: end-slide, center
 
 Backup
 
+---
+# JSON Patch files for new signal models
+<br>
+
+```
+$ pyhf cls example.json | jq .CLs_obs
+0.3599845631401913
+```
+```
+$ cat new_signal.json
+[{
+    "op": "replace",
+    "path": "/channels/0/samples/0/data",
+    "value": [5.0, 6.0]
+}]
+```
+```
+$ pyhf cls example.json --patch new_signal.json | jq .CLs_obs
+0.4764263982925686
+```
+
+---
+# ...which can be streamed from HEPData
+<br>
+
+```
+$ curl -sL https://git.io/nominal | \
+  pyhf cls --patch <(curl -sL https://git.io/newsignal)
+```
+
+```
+# Nominal
+$ curl -sL https://git.io/fjxXE | \
+  pyhf cls | \
+  jq .CLs_obs
+0.3599845631401913
+```
+```
+# New signal
+$ curl -sL https://git.io/fjxXE | \
+  pyhf cls --patch <(curl -sL https://git.io/JeWTx) | \
+  jq .CLs_obs
+0.4764263982925686
+```
 
 ---
 # References
