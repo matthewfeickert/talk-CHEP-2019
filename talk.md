@@ -54,12 +54,13 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 
 .center[([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))]
 
-<br>
-
-.center[This hadn't been done in HEP until now]
+.bold[This hadn't been done in HEP until now]
+- In an "open world" of statistics this is a difficult problem to solve
+- What to preserve and how? All of ROOT?
+- Idea: Focus on a single more tractable binned model first
 
 ---
-# HistFactory
+# Enter HistFactory
 
 <br>
 
