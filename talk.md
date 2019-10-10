@@ -23,6 +23,25 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 - Slides must be prepared for projection 16:9 format (longer side along the horizontal direction) ✓
 
 ---
+# Why is the likelihood important?
+
+<br>
+
+.kol-1-2.width-90[
+- High information-density summary of analysis
+- Almost everything we do in the analysis ultimately effects the likelihood and is encapsulated in it
+   - Trigger
+   - Detector
+   - Systematic Uncertainties
+   - Event Selection
+- Unique representation of the analysis to preserve
+]
+.kol-1-2.width-90[
+<br><br><br>
+[![likelihood_connections](figures/likelihood_connections.png)](https://indico.cern.ch/event/839382/contributions/3521168/)
+]
+
+---
 # Likelihood serialization...
 
 .center[...making good on [19 year old agreement to publish likelihoods](https://indico.cern.ch/event/746178/contributions/3396797/)]
