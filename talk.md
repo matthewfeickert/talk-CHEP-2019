@@ -77,7 +77,7 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 # HistFactory Template
 
 $$
-f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right)} \color{red}{\prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
+f\left(\vec{n}, \vec{a}\middle|\vec{\eta}, \vec{\chi}\right) = \color{blue}{\prod\_{c \\,\in\\, \textrm{channels}} \prod\_{b \\,\in\\, \textrm{bins}\_c} \textrm{Pois} \left(n\_{cb} \middle| \nu\_{cb}\left(\vec{\eta}, \vec{\chi}\right)\right)} \\,\color{red}{\prod\_{\chi \\,\in\\, \vec{\chi}} c\_{\chi} \left(a\_{\chi}\middle|\chi\right)}
 $$
 
 $$
@@ -103,43 +103,14 @@ $$
 
 Until now, the only implementation of HistFactory has been in RooStats+RooFit
 
-- To start using HistFactory p.d.f.s first have to learn ROOT, RooFit, RooStats
-   - Problem for our theory colleagues (generally don't want to)
-- Possible issues with scaling I/O and memory for large models
-   - Not multithreaded
-- Difficult to interface with modern tools for minimization and computation of the p.d.f.
-- Likelihood stored in the binary ROOT format
+<br>
+
+- Preservation: Likelihood stored in the binary ROOT format
    - Challenge for long-term preservation (i.e. HEPData)
    - Why is a histogram needed for an array of numbers?
-
----
-# Collaborators
-
-<br><br>
-
-.grid[
-.kol-1-3.center[
-.circle.width-80[![Lukas](figures/collaborators/heinrich.jpg)]
-
-[Lukas Heinrich](https://github.com/lukasheinrich)
-
-CERN
-]
-.kol-1-3.center[
-.circle.width-80[![Giordon](https://avatars0.githubusercontent.com/u/761483)]
-
-[Giordon Stark](https://github.com/kratsg)
-
-UCSC SCIPP
-]
-.kol-1-3.center[
-.circle.width-70[![Kyle](figures/collaborators/cranmer.png)]
-
-[Kyle Cranmer](http://theoryandpractice.org/)
-
-NYU
-]
-]
+- To start using HistFactory p.d.f.s first have to learn ROOT, RooFit, RooStats
+   - Problem for our theory colleagues (generally don't want to)
+- Difficult to use for reinterpretation
 
 ---
 # `pyhf`: HistFactory in pure Python
