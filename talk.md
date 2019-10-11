@@ -139,53 +139,64 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 ---
 # Example pyhf JSON spec
 
-<a href="https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=seti&wt=none&l=application%2Fjson&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=3px&ph=1px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=4x&wm=false&code=%257B%250A%2520%2520%2520%2520%2522channels%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522samples%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522signal%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B5.0%252C%252010.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2520%2522name%2522%253A%2520%2522mu%2522%252C%2520%2522type%2522%253A%2520%2522normfactor%2522%252C%2520%2522data%2522%253A%2520null%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522background%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2522name%2522%253A%2520%2522uncorr_bkguncrt%2522%252C%2520%2522type%2522%253A%2520%2522shapesys%2522%252C%2520%2522data%2522%253A%2520%255B5.0%252C%252012.0%255D%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522observations%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522measurements%2522%253A%2520%255B%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522Measurement%2522%252C%2520%2522config%2522%253A%2520%257B%2522poi%2522%253A%2520%2522mu%2522%252C%2520%2522parameters%2522%253A%2520%255B%255D%257D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522version%2522%253A%2520%25221.0.0%2522%250A%257D">`JSON` defining a single channel, two bin counting experiment with systematics</a>
-
-.center.width-100[![demo_JSON](figures/carbon_JSON_spec.png)]
-
----
-# Example pyhf JSON spec
-
 <a href="https://carbon.now.sh/?bg=rgba(255%2C255%2C255%2C1)&t=seti&wt=none&l=application%2Fjson&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=3px&ph=1px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=4x&wm=false&code=%257B%250A%2520%2520%2520%2520%2522channels%2522%253A%2520%255B%2520%2523%2520List%2520of%2520regions%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522samples%2522%253A%2520%255B%2520%2523%2520List%2520of%2520samples%2520in%2520region%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522signal%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B5.0%252C%252010.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2523%2520List%2520of%2520rate%2520factors%2520and%252For%2520systematic%2520uncertainties%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2520%2522name%2522%253A%2520%2522mu%2522%252C%2520%2522type%2522%253A%2520%2522normfactor%2522%252C%2520%2522data%2522%253A%2520null%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522background%2522%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%252C%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2522modifiers%2522%253A%2520%255B%2520%257B%2522name%2522%253A%2520%2522uncorr_bkguncrt%2522%252C%2520%2522type%2522%253A%2520%2522shapesys%2522%252C%2520%2522data%2522%253A%2520%255B5.0%252C%252012.0%255D%257D%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%255D%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522observations%2522%253A%2520%255B%2520%2523%2520Observed%2520data%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522singlechannel%2522%252C%2520%2522data%2522%253A%2520%255B50.0%252C%252060.0%255D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522measurements%2522%253A%2520%255B%2520%2523%2520Parameter%2520of%2520interest%250A%2520%2520%2520%2520%2520%2520%2520%2520%257B%2520%2522name%2522%253A%2520%2522Measurement%2522%252C%2520%2522config%2522%253A%2520%257B%2522poi%2522%253A%2520%2522mu%2522%252C%2520%2522parameters%2522%253A%2520%255B%255D%257D%2520%257D%250A%2520%2520%2520%2520%255D%252C%250A%2520%2520%2520%2520%2522version%2522%253A%2520%25221.0.0%2522%2520%2523%2520Version%2520of%2520spec%2520standard%250A%257D">`JSON` defining a single channel, two bin counting experiment with systematics</a>
 
 .center.width-100[![demo_JSON](figures/carbon_JSON_spec_annotated.png)]
 
 ---
-class: middle
-
-# Make a measurement
-
-.center.width-80[![measurement_cartoon](figures/measurement_cartoon.png)]
-
----
 # $CL_{s}$ Example using `pyhf` CLI
 
 .center.width-80[![demo_CLI](figures/carbon_CLI_output.png)]
 
----
-# Lukas note
-
-- Change the model to give more interesting CLs values
-- Talk more about the JSON patch advantages
-- c.f. slide 18 from Lukas Higgs Combination talk
-
----
-# $CL_{s}$ Example using `pyhf` CLI
-
-.center.width-80[![demo_CLI](figures/carbon_CLI_output.png)]
+<!-- --- -->
+<!-- # Lukas note -->
+<!--  -->
+<!-- - Change the model to give more interesting CLs values -->
+<!-- - c.f. slide 18 from Lukas Higgs Combination talk -->
 
 ---
-class: middle
-
-# Change the signal model
+# JSON Patch for new signal models
+<!--  -->
+.kol-1-2[
+<br>
+.center.width-100[![demo_JSON](figures/carbon_JSON_spec_short.png)]
+.center[Orignal model]
+]
+.kol-1-2[
+<!-- <br> -->
+.center.width-100[![patch_file](figures/carbon_patch.png)]
+.center[New Signal (JSON Patch file)]
+]
+.kol-1-1[
+.center.width-80[![demo_JSON](figures/carbon_patched_JSON.png)]
+.center[Reinterpretation]
+]
 
 ---
-# JSON Patch files for new signal models
-
-.center.width-100[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
+# JSON Patch for new signal models
+<!--  -->
+.center.width-80[![signal_reinterpretation](figures/carbon_reinterpretation.png)]
+.kol-1-2[
+.center.width-70[![measurement_cartoon](figures/measurement_cartoon.png)]
+.center[Original analysis (model A)]
+]
+.kol-1-2[
+.center.width-70[![reinterpretation_cartoon](figures/reinterpretation_cartoon.png)]
+.center[Recast analysis (model B)]
+]
 
 ---
-# ...which can be streamed from HEPData
+# Likelihoods preserved on HEPData
+
+- Background-only model JSON stored
+- Signal models stored as JSON Patch files
+- Together are able to fully preserve the model
+
+.center.bold[Note to reviewer: Here will go a screenshot of the HEPData page but we are waiting on the SUSY conveners to upload the likelihood]
+
+---
+# ...can be streamed from HEPData
+<br>
 
 .center.width-100[![stream_HEPData](figures/carbon_stream_HEPData.png)]
 
@@ -193,36 +204,35 @@ class: middle
 # Likelihood serialization and reproduction
 <!--  -->
 - ATLAS PUB note on the JSON schema for serialization and reproduction of results ([ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863))
-   - Contours: .teal[█] original ROOT+XML, .lightblue[█] pyhf JSON, .lightgreen[█] JSON converted back to ROOT+XML
+   - Contours: .root[█] original ROOT+XML, .pyhf[█] pyhf JSON, .roundtrip[█] JSON converted back to ROOT+XML
+      - Overlay of contours nice visualization of near perfect agreement
    - Serialized likelihood and reproduced results of ATLAS Run-2 search for sbottom quarks ([CERN-EP-2019-142](http://inspirehep.net/record/1748602)) and published to HEPData
    - Shown to reproduce results but faster! .bold[ROOT:] 10+ hours .bold[pyhf:] < 30 minutes
 
 .kol-1-2.center.width-100[
 [![overlay_multiplex_contour](figures/overlay_multiplex_contour.png)](https://cds.cern.ch/record/2684863)
-Overlay of three countours
 ]
 .kol-1-2.right.width-75[
 [![discrepancy](figures/discrepancy.png)](https://cds.cern.ch/record/2684863)
-Largest discrepancy
 ]
 
 ---
 # Summary
-
+<!--  -->
 Through pyhf are able to provide:
-
-- JSON specification of likelihoods
+<!--  -->
+- .bold[JSON specification] of likelihoods
    - human/machine readable, versionable, HEPData friendly, orders of magnitude smaller
-- Bidirectional translation of likelihood specifications
+- .bold[Bidirectional translation] of likelihood specifications
    - ROOT workspaces ↔ JSON
-- Independent Python-only implementation of HistFactory + hypothesis testing
-- Publication for the first time of the full likelihood of a search for new physics
+- Independent .bold[pure-Python implementation] of HistFactory + hypothesis testing
+- Publication for the first time of the .bold[full likelihood] of a search for new physics
 
 .kol-1-2.center.width-100[
 [![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
 ([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))
 ]
-.kol-1-2.center.width-100[
+.kol-1-2.center.width-95[
 [![PUB_note_cover](figures/PUB_note_cover.png)](https://cds.cern.ch/record/2684863)
 ([ATLAS, 2019](https://cds.cern.ch/record/2684863))
 ]
@@ -231,6 +241,55 @@ Through pyhf are able to provide:
 class: end-slide, center
 
 Backup
+
+---
+# pyhf team
+
+<br><br>
+
+.grid[
+.kol-1-4.center[
+.circle.width-80[![Lukas](figures/collaborators/heinrich.jpg)]
+
+[Lukas Heinrich](https://github.com/lukasheinrich)
+
+CERN
+]
+.kol-1-4.center[
+.circle.width-80[![Matthew](https://avatars2.githubusercontent.com/u/5142394)]
+
+[Matthew Feickert](https://www.matthewfeickert.com/)
+
+Illinois
+]
+.kol-1-4.center[
+.circle.width-80[![Giordon](https://avatars0.githubusercontent.com/u/761483)]
+
+[Giordon Stark](https://github.com/kratsg)
+
+UCSC SCIPP
+]
+.kol-1-4.center[
+.circle.width-70[![Kyle](figures/collaborators/cranmer.png)]
+
+[Kyle Cranmer](http://theoryandpractice.org/)
+
+NYU
+]
+]
+
+.kol-3-4.center.bold[Core Developers]
+.kol-1-4.center.bold[Advising]
+
+---
+# ROOT + XML to JSON and back
+
+.center.width-100[![flowchart](figures/process.png)]
+
+---
+# Best-fit parameter values
+
+.center.width-90[![fit_results](figures/fit_results.png)]
 
 ---
 # JSON Patch files for new signal models
