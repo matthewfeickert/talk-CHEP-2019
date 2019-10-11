@@ -14,7 +14,7 @@ November 7th, 2019
 ---
 # Summary of Invited Talk Information and Guidelines
 
-Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/773049/page/17867-instructions-to-speakers)
+From the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/773049/page/17867-instructions-to-speakers)
 
 - Topic: [Likelihood preservation and statistical reproduction of searches for new physics](https://indico.cern.ch/event/773049/contributions/3476143/)
    - [ATL-PHYS-PUB-2019-029](https://cds.cern.ch/record/2684863)
@@ -29,7 +29,7 @@ Form the CHEP page on [Instructions to speakers](https://indico.cern.ch/event/77
 
 .kol-1-2.width-90[
 - High information-density summary of analysis
-- Almost everything we do in the analysis ultimately effects the likelihood and is encapsulated in it
+- Almost everything we do in the analysis ultimately affects the likelihood and is encapsulated in it
    - Trigger
    - Detector
    - Systematic Uncertainties
@@ -160,7 +160,7 @@ Until now, the only implementation of HistFactory has been in RooStats+RooFit
 .kol-1-2[
 <br>
 .center.width-100[![demo_JSON](figures/carbon_JSON_spec_short.png)]
-.center[Orignal model]
+.center[Original model]
 ]
 .kol-1-2[
 <!-- <br> -->
