@@ -7,6 +7,6 @@ default: decktape
 all: decktape
 
 decktape: talk.md
-	docker run --rm -v ${dir_path}:/slides/ astefanutti/decktape \
+	docker run --rm -t -v ${dir_path}:/slides astefanutti/decktape:2.9.2 \
 	https://matthewfeickert.github.io/${current_dir}/index.html?p=talk.md \
 	talk.pdf
