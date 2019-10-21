@@ -4,7 +4,9 @@ count: false
 # Likelihood preservation and statistical reproduction of searches for new physics
 <br>
 
-Matthew Feickert<br>
+.blue[Matthew Feickert], Lukas Heinrich, Giordon Stark<br>
+on behalf of the ATLAS collaboration<br>
+<br>
 [matthew.feickert@cern.ch](mailto:matthew.feickert@cern.ch)
 
 [CHEP 2019](https://indico.cern.ch/event/773049/contributions/3476143/)
@@ -153,7 +155,7 @@ $$
 .center[New Signal (JSON Patch file)]
 ]
 .kol-1-1[
-.center.width-70[![demo_JSON](figures/carbon_patched_JSON.png)]
+.center.width-60[![demo_JSON](figures/carbon_patched_JSON.png)]
 .center[Reinterpretation]
 ]
 
@@ -220,54 +222,15 @@ Through pyhf are able to provide:
 [![likelihood_publishing_agreement](figures/likelihood_publishing_agreement.png)](https://cds.cern.ch/record/411537)
 ([1st Workshop on Confidence Limits, CERN, 2000](http://inspirehep.net/record/534129))
 ]
-.kol-1-2.width-90[
-.right[[![PUB_note_cover](figures/PUB_note_cover.png)](https://cds.cern.ch/record/2684863)]
-.center[⠀⠀([ATLAS, 2019](https://cds.cern.ch/record/2684863))]
+.kol-1-2.center.width-85[
+[![PUB_note_cover](figures/PUB_note_cover.png)](https://cds.cern.ch/record/2684863)
+([ATLAS, 2019](https://cds.cern.ch/record/2684863))
 ]
 
 ---
 class: end-slide, center
 
 Backup
-
----
-# pyhf team
-
-<br><br>
-
-.grid[
-.kol-1-4.center[
-.circle.width-80[![Lukas](figures/collaborators/heinrich.jpg)]
-
-[Lukas Heinrich](https://github.com/lukasheinrich)
-
-CERN
-]
-.kol-1-4.center[
-.circle.width-80[![Matthew](https://avatars2.githubusercontent.com/u/5142394)]
-
-[Matthew Feickert](https://www.matthewfeickert.com/)
-
-Illinois
-]
-.kol-1-4.center[
-.circle.width-80[![Giordon](https://avatars0.githubusercontent.com/u/761483)]
-
-[Giordon Stark](https://github.com/kratsg)
-
-UCSC SCIPP
-]
-.kol-1-4.center[
-.circle.width-70[![Kyle](figures/collaborators/cranmer.png)]
-
-[Kyle Cranmer](http://theoryandpractice.org/)
-
-NYU
-]
-]
-
-.kol-3-4.center.bold[Core Developers]
-.kol-1-4.center.bold[Advising]
 
 ---
 # ROOT + XML to JSON and back
