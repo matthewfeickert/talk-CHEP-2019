@@ -1,0 +1,8 @@
+{
+  "NotebookApp": {
+    "nbserver_extensions": {
+      "jupyterlab_iframe.extension": true,
+      "jupyterlab_iframe.welcome": "https://matthewfeickert.github.io/talk-CHEP-2019/index.html#8",
+    }
+  }
+}
