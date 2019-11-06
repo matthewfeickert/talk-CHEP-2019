@@ -177,7 +177,7 @@ $$
 
 - Background-only model JSON stored
 - Signal models stored as JSON Patch files
-- Together are able to fully preserve the full model
+- Together are able to fully preserve the full model (with own DOI! .width-20[[![DOI](https://img.shields.io/badge/DOI-10.17182%2Fhepdata.89408.v1%2Fr2-blue.svg)](https://doi.org/10.17182/hepdata.89408.v1/r2)] )
 
 [.center.width-70[![HEPData_likelihoods](figures/HEPData_likelihoods.png)]](https://www.hepdata.net/record/ins1748602)
 
@@ -186,9 +186,9 @@ $$
 
 - Background-only model JSON stored
 - Signal models stored as JSON Patch files
-- Together are able to fully preserve the full model
+- Together are able to fully preserve the full model (with own DOI! .width-20[[![DOI](https://img.shields.io/badge/DOI-10.17182%2Fhepdata.89408.v1%2Fr2-blue.svg)](https://doi.org/10.17182/hepdata.89408.v1/r2)] )
 
-.center.width-90[![HEPData_streamed_likelihoods](figures/carbon_HEPData_streamed_likelihoods.png)]
+.center.width-80[![HEPData_streamed_likelihoods](figures/carbon_HEPData_streamed_likelihoods.png)]
 
 ---
 # Likelihood serialization and reproduction
