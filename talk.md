@@ -248,19 +248,19 @@ Backup
 
 ```
 $ pyhf cls example.json | jq .CLs_obs
-0.3599845631401913
+0.053994246621274014
 ```
 ```
 $ cat new_signal.json
 [{
     "op": "replace",
     "path": "/channels/0/samples/0/data",
-    "value": [5.0, 6.0]
+    "value": [10.0, 6.0]
 }]
 ```
 ```
 $ pyhf cls example.json --patch new_signal.json | jq .CLs_obs
-0.4764263982925686
+0.3536906623262466
 ```
 
 ---
