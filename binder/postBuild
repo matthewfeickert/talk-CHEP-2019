@@ -1,4 +1,5 @@
 jupyter labextension install jupyterlab_iframe
 jupyter serverextension enable --py jupyterlab_iframe
 
-cp binder/jupyter_notebook_config.json $HOME/.jupyter/jupyter_notebook_config.json
+jupyter notebook --generate-config
+echo "c.JupyterLabIFrame.welcome = 'https://matthewfeickert.github.io/talk-CHEP-2019/index.html#8'" >> $HOME/.jupyter/jupyter_notebook_config.py 
