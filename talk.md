@@ -177,7 +177,7 @@ $$
 
 - Background-only model JSON stored
 - Signal models stored as JSON Patch files
-- Together are able to fully preserve the full model
+- Together are able to fully preserve the full model (with own DOI! .width-20[[![DOI](https://img.shields.io/badge/DOI-10.17182%2Fhepdata.89408.v1%2Fr2-blue.svg)](https://doi.org/10.17182/hepdata.89408.v1/r2)] )
 
 [.center.width-70[![HEPData_likelihoods](figures/HEPData_likelihoods.png)]](https://www.hepdata.net/record/ins1748602)
 
@@ -186,9 +186,9 @@ $$
 
 - Background-only model JSON stored
 - Signal models stored as JSON Patch files
-- Together are able to fully preserve the full model
+- Together are able to fully preserve the full model (with own DOI! .width-20[[![DOI](https://img.shields.io/badge/DOI-10.17182%2Fhepdata.89408.v1%2Fr2-blue.svg)](https://doi.org/10.17182/hepdata.89408.v1/r2)] )
 
-.center.width-90[![HEPData_streamed_likelihoods](figures/carbon_HEPData_streamed_likelihoods.png)]
+.center.width-80[![HEPData_streamed_likelihoods](figures/carbon_HEPData_streamed_likelihoods.png)]
 
 ---
 # Likelihood serialization and reproduction
@@ -269,22 +269,22 @@ $ pyhf cls example.json --patch new_signal.json | jq .CLs_obs
 
 ```
 # One signal model
-$ curl -sL https://bit.ly/33TVZ5p | \
+$ curl -sL https://doi.org/10.17182/hepdata.89408.v1/r2 | \
   tar -O -xzv RegionA/BkgOnly.json | \
-  pyhf cls --patch <(curl -sL https://bit.ly/33TVZ5p | \
-      tar -O -xzv RegionA/patch.sbottom_1300_205_60.json) | \
+  pyhf cls --patch <(curl -sL https://doi.org/10.17182/hepdata.89408.v1/r2 | \
+    tar -O -xzv RegionA/patch.sbottom_1300_205_60.json) | \
   jq .CLs_obs
-0.24443635754482018
+0.2444363799054463
 ```
 
 ```
 # A different signal model
-$ curl -sL https://bit.ly/33TVZ5p | \
+$ curl -sL https://doi.org/10.17182/hepdata.89408.v1/r2 | \
   tar -O -xzv RegionA/BkgOnly.json | \
-  pyhf cls --patch <(curl -sL https://bit.ly/33TVZ5p | \
-      tar -O -xzv RegionA/patch.sbottom_1300_230_100.json) | \
+  pyhf cls --patch <(curl -sL https://doi.org/10.17182/hepdata.89408.v1/r2 | \
+    tar -O -xzv RegionA/patch.sbottom_1300_230_100.json) | \
   jq .CLs_obs
-0.040766025813435774
+0.040766026035752724
 ```
 
 ---
