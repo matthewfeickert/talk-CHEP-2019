@@ -131,6 +131,15 @@ $$
 .center.width-80[![demo_JSON](figures/carbon_JSON_spec_annotated.png)]
 
 ---
+# Live demo time!
+
+<br><br>
+
+.center.bold[Just click the button!]<br><br><br>
+
+.center.width-70[[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewfeickert/talk-CHEP-2019/master?urlpath=lab)]
+
+---
 # $CL_{s}$ Example using `pyhf` CLI
 
 .center.width-60[![demo_CLI](figures/carbon_CLI_output.png)]
