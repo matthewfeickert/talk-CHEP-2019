@@ -233,6 +233,15 @@ class: end-slide, center
 Backup
 
 ---
+# Live demo time!
+
+<br><br>
+
+.center.bold[Just click the button!]<br><br><br>
+
+.center.width-70[[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewfeickert/talk-CHEP-2019/master?urlpath=lab)]
+
+---
 # ROOT + XML to JSON and back
 
 .center.width-70[![flowchart](figures/process.png)]
